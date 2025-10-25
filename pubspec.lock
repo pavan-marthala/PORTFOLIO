@@ -70,6 +70,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
+  flutter_staggered_grid_view:
+    dependency: "direct main"
+    description:
+      name: flutter_staggered_grid_view
+      sha256: "19e7abb550c96fbfeb546b23f3ff356ee7c59a019a651f8f102a4ba9b7349395"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -200,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.6"
+  text_scroll:
+    dependency: "direct main"
+    description:
+      name: text_scroll
+      sha256: "164b49e6134fca874989213d4e7ba225e2c3f9e30d9e32f14d543b2fc55716a0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
   vector_math:
     dependency: transitive
     description:

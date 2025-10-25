@@ -4,6 +4,7 @@ import 'package:portfolio_pavan/core/theme/theme.dart';
 import 'package:portfolio_pavan/core/utils/gradient_button.dart';
 import 'package:portfolio_pavan/core/utils/gradient_text.dart';
 
+import '../../../../utils/check_platforms.dart';
 import '../../../../utils/gradient_outline_button.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -23,7 +24,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Container(
           padding: EdgeInsets.symmetric(
             horizontal: Dimens.largePadding,
-            vertical: Dimens.padding,
+            vertical: PlatformChecker.isWeb()
+                ? Dimens.largePadding
+                : Dimens.padding,
           ),
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -44,7 +47,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     GradientText(
-                      'Breaking News',
+                      'Pavan Kalyan Reddy M',
                       gradient: gradients.rainbow,
                       style: typography.displayLarge.copyWith(
                         fontWeight: FontWeight.w900,
@@ -75,6 +78,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 outlineGradient: gradients.primary,
                 backgroundColor: colors.surfaceLight,
                 onPressed: () {},
+                    showShadow: false,
               ),
             ],
           ),
@@ -84,5 +88,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(120);
+  Size get preferredSize => Size.fromHeight(PlatformChecker.isWeb() ? 100 : 80);
 }

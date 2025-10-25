@@ -277,8 +277,8 @@ class AppGradients extends ThemeExtension<AppGradients> {
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: [
-        Color(0xFF8B5CF6).withOpacity(0.05),
-        Color(0xFFEC4899).withOpacity(0.05),
+        Color(0xFF8B5CF6).withValues(alpha: .05),
+        Color(0xFFEC4899).withValues(alpha:0.05),
       ],
     ),
     overlayBottom: LinearGradient(
@@ -286,7 +286,7 @@ class AppGradients extends ThemeExtension<AppGradients> {
       end: Alignment.bottomCenter,
       colors: [
         Colors.transparent,
-        Color(0xFF000000).withOpacity(0.7),
+        Color(0xFF000000).withValues(alpha:0.7),
       ],
     ),
     overlayTop: LinearGradient(
@@ -294,7 +294,7 @@ class AppGradients extends ThemeExtension<AppGradients> {
       end: Alignment.topCenter,
       colors: [
         Colors.transparent,
-        Color(0xFF000000).withOpacity(0.7),
+        Color(0xFF000000).withValues(alpha:0.7),
       ],
     ),
 
@@ -304,7 +304,7 @@ class AppGradients extends ThemeExtension<AppGradients> {
       end: Alignment.centerRight,
       colors: [
         Colors.transparent,
-        Colors.white.withOpacity(0.3),
+        Colors.white.withValues(alpha:0.3),
         Colors.transparent,
       ],
       stops: [0.0, 0.5, 1.0],

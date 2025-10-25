@@ -256,7 +256,6 @@ class AppTheme {
           secondary: _darkAppColors.secondary,
           error: _darkAppColors.error,
           surface: _darkAppColors.surfaceLight,
-          background: _darkAppColors.background,
         ),
         appBarTheme: AppBarTheme(
           backgroundColor: _darkAppColors.surfaceLight,
@@ -272,7 +271,7 @@ class AppTheme {
         navigationBarTheme: NavigationBarThemeData(
           backgroundColor: _darkAppColors.surfaceLight,
           elevation: 0,
-          indicatorColor: _darkAppColors.primary.withOpacity(0.2),
+          indicatorColor: _darkAppColors.primary.withValues(alpha:0.2),
           labelTextStyle: WidgetStateProperty.resolveWith((
             Set<WidgetState> states,
           ) {
@@ -323,7 +322,7 @@ class AppTheme {
           ),
         ),
         chipTheme: ChipThemeData(
-          backgroundColor: _darkAppColors.primaryShade1.withOpacity(0.2),
+          backgroundColor: _darkAppColors.primaryShade1.withValues(alpha:0.2),
           labelStyle: AppTypography.dark.labelSmall.copyWith(
             color: _darkAppColors.primary,
             fontWeight: FontWeight.w800,

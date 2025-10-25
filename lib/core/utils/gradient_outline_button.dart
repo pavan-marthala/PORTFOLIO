@@ -43,7 +43,7 @@ class GradientOutlineButton extends StatelessWidget {
         boxShadow: showShadow
             ? [
                 BoxShadow(
-                  color: outlineGradient.colors.first.withOpacity(0.3),
+                  color: outlineGradient.colors.first.withValues(alpha:0.3),
                   blurRadius: 15,
                   offset: const Offset(0, 8),
                 ),
@@ -288,14 +288,14 @@ class _AnimatedGradientOutlineButtonState
             boxShadow: _isPressed
                 ? [
                     BoxShadow(
-                      color: widget.gradient.colors.first.withOpacity(0.5),
+                      color: widget.gradient.colors.first.withValues(alpha:0.5),
                       blurRadius: 20,
                       offset: const Offset(0, 4),
                     ),
                   ]
                 : [
                     BoxShadow(
-                      color: widget.gradient.colors.first.withOpacity(0.3),
+                      color: widget.gradient.colors.first.withValues(alpha:0.3),
                       blurRadius: 15,
                       offset: const Offset(0, 8),
                     ),

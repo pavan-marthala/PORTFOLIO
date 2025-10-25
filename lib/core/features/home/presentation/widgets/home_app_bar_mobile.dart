@@ -79,6 +79,7 @@ class HomeAppBarMobile extends StatelessWidget implements PreferredSizeWidget {
                       outlineGradient: gradients.primary,
                       backgroundColor: colors.surfaceLight,
                       onPressed: () {},
+                    showShadow: false,
                     ),
                   ),
                 ],
