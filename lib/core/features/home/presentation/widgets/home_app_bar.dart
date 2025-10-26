@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_pavan/core/theme/dimens.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
-import 'package:portfolio_pavan/core/utils/gradient_button.dart';
 import 'package:portfolio_pavan/core/utils/gradient_text.dart';
 
 import '../../../../utils/check_platforms.dart';
-import '../../../../utils/gradient_outline_button.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
@@ -67,18 +65,6 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ],
                 ),
-              ),
-              GradientButton(
-                text: 'Hire Me',
-                gradient: gradients.purplePink,
-                onPressed: () {},
-              ),
-              GradientOutlineButton(
-                text: 'Contact',
-                outlineGradient: gradients.primary,
-                backgroundColor: colors.surfaceLight,
-                onPressed: () {},
-                    showShadow: false,
               ),
             ],
           ),

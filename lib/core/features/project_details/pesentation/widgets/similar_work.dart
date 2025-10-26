@@ -3,6 +3,8 @@ import 'package:portfolio_pavan/core/theme/dimens.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
 import 'package:portfolio_pavan/core/utils/gradient_container.dart';
 
+import '../../../contact/presentation/screens/contact_screen.dart';
+
 class SimilarWork extends StatelessWidget {
   const SimilarWork({super.key});
 
@@ -34,7 +36,12 @@ class SimilarWork extends StatelessWidget {
           ),
           SizedBox(height: Dimens.mediumPadding),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ContactScreen()),
+              );
+            },
             borderRadius: BorderRadius.circular(30),
             child: Container(
               padding: EdgeInsets.symmetric(

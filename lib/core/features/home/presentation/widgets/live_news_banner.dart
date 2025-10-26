@@ -71,8 +71,8 @@ class _AutoScrollingText extends StatefulWidget {
 
 class _AutoScrollingTextState extends State<_AutoScrollingText>
     with SingleTickerProviderStateMixin {
-  late ScrollController _scrollController;
-  late AnimationController _controller;
+  late final ScrollController _scrollController;
+  late final AnimationController _controller;
 
   @override
   void initState() {
@@ -81,20 +81,31 @@ class _AutoScrollingTextState extends State<_AutoScrollingText>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(minutes: 4),
-    )..repeat();
+    );
 
-    _controller.addListener(() {
-      if (_scrollController.hasClients) {
-        final maxScroll = _scrollController.position.maxScrollExtent;
-        _scrollController.jumpTo(maxScroll * _controller.value);
-      }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+
+      _controller.addListener(() {
+        if (!mounted) return;
+        if (_scrollController.hasClients) {
+          final maxScroll = _scrollController.position.maxScrollExtent;
+          _scrollController.jumpTo(
+            (maxScroll * _controller.value)
+                .clamp(0.0, _scrollController.position.maxScrollExtent),
+          );
+        }
+      });
+
+      _controller.repeat();
     });
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _controller.stop();
     _controller.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -116,8 +127,8 @@ class _AutoScrollingTextState extends State<_AutoScrollingText>
 List<String> skills = [
   "Flutter",
   "Dart",
-  "Java"
-      "JavaScript",
+  "Java",
+  "JavaScript",
   "TypeScript",
   "Markdown",
   "AWS",

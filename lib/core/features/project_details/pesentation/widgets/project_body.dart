@@ -5,6 +5,7 @@ import 'package:portfolio_pavan/core/features/project_details/pesentation/widget
 import 'package:portfolio_pavan/core/theme/colors.dart';
 import 'package:portfolio_pavan/core/theme/dimens.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
+import 'package:portfolio_pavan/core/utils/app_network_image.dart';
 import 'package:portfolio_pavan/core/utils/gradient_container.dart';
 import 'package:portfolio_pavan/core/utils/sized_context.dart';
 
@@ -100,19 +101,12 @@ class ProjectBody extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
-        child: Image.network(
-          projectModel.coverImage ?? 'https://placehold.co/$imageHeight',
+        child: AppNetworkImage(
+          imageUrl: projectModel.coverImage ?? '',
           height: imageHeight,
           width: double.infinity,
           fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Image.network(
-              'https://placehold.co/$imageHeight',
-              height: imageHeight,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            );
-          },
+          alignment: Alignment.topCenter,
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_pavan/core/features/home/data/repository/projects.dart';
+import 'package:portfolio_pavan/core/features/home/data/repository/projects_data.dart';
 import 'package:portfolio_pavan/core/features/project_details/pesentation/screeens/project_screen.dart';
 import '../../../../utils/project_card.dart';
 

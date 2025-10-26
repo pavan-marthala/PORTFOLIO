@@ -5,6 +5,8 @@ import 'package:portfolio_pavan/core/theme/theme.dart';
 import 'package:portfolio_pavan/core/utils/gradient_outline_button.dart';
 import 'package:portfolio_pavan/core/utils/sized_context.dart';
 
+import '../../../contact/presentation/screens/contact_screen.dart';
+
 class ProjectAppBar extends StatelessWidget {
   const ProjectAppBar({super.key});
 
@@ -77,7 +79,14 @@ class ProjectAppBar extends StatelessWidget {
                         text: 'Contact',
                         outlineGradient: gradients.primary,
                         backgroundColor: colors.surfaceLight,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ContactScreen(),
+                            ),
+                          );
+                        },
                         showShadow: false,
                       ),
                     ],

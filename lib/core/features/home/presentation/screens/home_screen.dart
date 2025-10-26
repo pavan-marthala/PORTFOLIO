@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:portfolio_pavan/core/features/contact/presentation/screens/contact_screen.dart';
 import 'package:portfolio_pavan/core/features/home/presentation/widgets/featured_project.dart';
-import 'package:portfolio_pavan/core/features/home/presentation/widgets/home_app_bar_mobile.dart';
 import 'package:portfolio_pavan/core/features/home/presentation/widgets/live_news_banner.dart';
+import 'package:portfolio_pavan/core/features/home/presentation/widgets/projects_widget.dart';
 import 'package:portfolio_pavan/core/theme/dimens.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
+import 'package:portfolio_pavan/core/utils/gradient_button.dart';
 import 'package:portfolio_pavan/core/utils/sized_context.dart';
 
 import '../widgets/home_app_bar.dart';
@@ -18,12 +21,40 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isGoingDown = false;
+  late final ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        if (!isGoingDown) setState(() => isGoingDown = true);
+      } else if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        if (isGoingDown) setState(() => isGoingDown = false);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final gradients = context.theme.appGradients;
+
     return Scaffold(
-      appBar: context.widthPx >= 600 ? HomeAppBar() : HomeAppBarMobile(),
+      appBar: HomeAppBar(),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        controller: _scrollController,
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             LiveNewsBanner(),
@@ -32,6 +63,49 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: Dimens.extraLargePadding),
           ],
         ),
+      ),
+      floatingActionButton: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (child, animation) =>
+            ScaleTransition(scale: animation, child: child),
+        child: isGoingDown
+            ? GradientButton(
+                key: const ValueKey('hire_button'),
+                text: 'Hire Me',
+                gradient: context.theme.appGradients.purplePink,
+                icon: Icon(Icons.work, color: Colors.white),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ContactScreen()),
+                  );
+                },
+              )
+            : Container(
+                key: const ValueKey('arrow_button'),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  gradient: gradients.purplePink,
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ContactScreen(),
+                        ),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(50),
+                    child: const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Icon(Icons.work, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
       ),
     );
   }
@@ -51,7 +125,6 @@ class BodyMobile extends StatelessWidget {
         children: [
           FeaturedProject(
             titleStyle: typography.bodyLarge.copyWith(
-              color: colors.textPrimary,
               fontWeight: FontWeight.bold,
             ),
             descriptionStyle: typography.bodySmall.copyWith(
@@ -60,6 +133,7 @@ class BodyMobile extends StatelessWidget {
             maxLines: 3,
             imageheight: 200,
           ),
+          ProjectsWidget(),
           QuickFacts(),
           ServicesOffered(),
         ],
@@ -81,10 +155,14 @@ class Body extends StatelessWidget {
           spacing: Dimens.largePadding,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(flex: 2, child: Column(children: [FeaturedProject()])),
+            Expanded(
+              flex: 2,
+              child: Column(
+                spacing: Dimens.largePadding,children: [FeaturedProject(), ProjectsWidget()]),
+            ),
             Expanded(
               child: Column(
-                spacing: Dimens.extraLargePadding,
+                spacing: Dimens.largePadding,
                 children: [QuickFacts(), ServicesOffered()],
               ),
             ),
