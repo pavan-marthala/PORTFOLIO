@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_pavan/core/theme/dimens.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
 import 'package:portfolio_pavan/core/utils/gradient_text.dart';
+import 'package:portfolio_pavan/core/utils/sized_context.dart';
 
 import '../../../../utils/check_platforms.dart';
 
@@ -13,6 +14,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     final colors = context.theme.appColors;
     final gradients = context.theme.appGradients;
     final typography = context.theme.appTypography;
+    final isMobile = context.widthPx < 600;
 
     return AppBar(
       toolbarHeight: preferredSize.height,
@@ -44,12 +46,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    GradientText(
-                      'Pavan Kalyan Reddy M',
-                      gradient: gradients.rainbow,
-                      style: typography.displayLarge.copyWith(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 36,
+                    Flexible(
+                      child: GradientText(
+                        'Pavan Kalyan Reddy M',
+                        gradient: gradients.rainbow,
+                        style: typography.displayLarge.copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontSize:isMobile?24: 36,
+
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     SizedBox(height: 8),

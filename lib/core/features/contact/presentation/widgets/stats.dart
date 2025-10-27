@@ -19,42 +19,45 @@ class Stats extends StatelessWidget {
     final isMobile = context.widthPx < 600;
     final isTab = context.widthPx >= 600 && context.widthPx < 1024;
     final isDesktop = context.widthPx >= 1024;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      spacing: Dimens.extraLargePadding + 20,
-      children: [
-        buildStat(
-          gradients,
-          typography,
-          colors,
-          isMobile,
-          isTab,
-          isDesktop,
-          stat: "<24h",
-          label: "Response Time",
-        ),
-        buildStat(
-          gradients,
-          typography,
-          colors,
-          isMobile,
-          isTab,
-          isDesktop,
-          stat: "98%",
-          label: "Client Satisfaction",
-        ),
-        buildStat(
-          gradients,
-          typography,
-          colors,
-          isMobile,
-          isTab,
-          isDesktop,
-          stat: "9+",
-          label: "Projects Completed",
-        ),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: Dimens.extraLargePadding + (isMobile ? 0 : 20),
+        children: [
+          buildStat(
+            gradients,
+            typography,
+            colors,
+            isMobile,
+            isTab,
+            isDesktop,
+            stat: "<24h",
+            label: "Response Time",
+          ),
+          buildStat(
+            gradients,
+            typography,
+            colors,
+            isMobile,
+            isTab,
+            isDesktop,
+            stat: "98%",
+            label: "Client Satisfaction",
+          ),
+          buildStat(
+            gradients,
+            typography,
+            colors,
+            isMobile,
+            isTab,
+            isDesktop,
+            stat: "9+",
+            label: "Projects Completed",
+          ),
+        ],
+      ),
     );
   }
 

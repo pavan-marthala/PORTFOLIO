@@ -27,7 +27,7 @@ class LiveNewsBanner extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Skils',
+                  'Skills',
                   style: typography.labelSmall.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w800,

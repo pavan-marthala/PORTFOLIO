@@ -1,9 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get_core/src/get_main.dart' show Get;
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:portfolio_pavan/core/features/contact/presentation/screens/contact_screen.dart';
 import 'package:portfolio_pavan/core/features/home/presentation/widgets/featured_project.dart';
 import 'package:portfolio_pavan/core/features/home/presentation/widgets/live_news_banner.dart';
 import 'package:portfolio_pavan/core/features/home/presentation/widgets/projects_widget.dart';
+import 'package:portfolio_pavan/core/routes/app_routes.dart';
 import 'package:portfolio_pavan/core/theme/dimens.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
 import 'package:portfolio_pavan/core/utils/gradient_button.dart';
@@ -21,7 +27,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool isGoingDown = false;
+  bool isScrolling = false;
+  Timer? _scrollStopTimer;
   late final ScrollController _scrollController;
 
   @override
@@ -29,20 +36,29 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _scrollController = ScrollController();
 
+    /// Listen to scroll position changes directly
     _scrollController.addListener(() {
-      if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.forward) {
-        if (!isGoingDown) setState(() => isGoingDown = true);
-      } else if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.reverse) {
-        if (isGoingDown) setState(() => isGoingDown = false);
+      /// Cancel any previous stop detection timer
+      _scrollStopTimer?.cancel();
+
+      /// User is scrolling now
+      if (!isScrolling) {
+        setState(() => isScrolling = true);
       }
+
+      /// Start a timer to detect when scrolling stops
+      _scrollStopTimer = Timer(const Duration(milliseconds: 300), () {
+        if (isScrolling) {
+          setState(() => isScrolling = false);
+        }
+      });
     });
   }
 
   @override
   void dispose() {
     _scrollController.dispose();
+    _scrollStopTimer?.cancel();
     super.dispose();
   }
 
@@ -50,62 +66,61 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final gradients = context.theme.appGradients;
 
-    return Scaffold(
-      appBar: HomeAppBar(),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            LiveNewsBanner(),
-            SizedBox(height: Dimens.largePadding),
-            context.widthPx >= 600 ? Body() : BodyMobile(),
-            SizedBox(height: Dimens.extraLargePadding),
-          ],
-        ),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
       ),
-      floatingActionButton: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        transitionBuilder: (child, animation) =>
-            ScaleTransition(scale: animation, child: child),
-        child: isGoingDown
-            ? GradientButton(
-                key: const ValueKey('hire_button'),
-                text: 'Hire Me',
-                gradient: context.theme.appGradients.purplePink,
-                icon: Icon(Icons.work, color: Colors.white),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ContactScreen()),
-                  );
-                },
-              )
-            : Container(
-                key: const ValueKey('arrow_button'),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  gradient: gradients.purplePink,
-                ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ContactScreen(),
+      child: Scaffold(
+        appBar: HomeAppBar(),
+        body: SingleChildScrollView(
+          controller: _scrollController,
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              LiveNewsBanner(),
+              SizedBox(height: Dimens.largePadding),
+              context.widthPx >= 600 ? Body() : BodyMobile(),
+              SizedBox(height: Dimens.extraLargePadding),
+            ],
+          ),
+        ),
+        floatingActionButton: Container(
+          key: const ValueKey('collapsed_button'),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            gradient: gradients.purplePink,
+          ),
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: () => Get.toNamed(AppRoutes().contact),
+              borderRadius: BorderRadius.circular(50),
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 8,
+                    children: [
+                      const Icon(Icons.work, color: Colors.white),
+                      if (!isScrolling)
+                        Text(
+                          "Hire Me",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14,
+                          ),
                         ),
-                      );
-                    },
-                    borderRadius: BorderRadius.circular(50),
-                    child: const Padding(
-                      padding: EdgeInsets.all(12),
-                      child: Icon(Icons.work, color: Colors.white),
-                    ),
+                    ],
                   ),
                 ),
               ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -136,6 +151,7 @@ class BodyMobile extends StatelessWidget {
           ProjectsWidget(),
           QuickFacts(),
           ServicesOffered(),
+          SizedBox(height: Dimens.extraLargePadding),
         ],
       ),
     );
@@ -158,12 +174,22 @@ class Body extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Column(
-                spacing: Dimens.largePadding,children: [FeaturedProject(), ProjectsWidget()]),
+                spacing: Dimens.largePadding,
+                children: [
+                  FeaturedProject(),
+                  ProjectsWidget(),
+                  SizedBox(height: Dimens.extraLargePadding),
+                ],
+              ),
             ),
             Expanded(
               child: Column(
                 spacing: Dimens.largePadding,
-                children: [QuickFacts(), ServicesOffered()],
+                children: [
+                  QuickFacts(),
+                  ServicesOffered(),
+                  SizedBox(height: Dimens.extraLargePadding),
+                ],
               ),
             ),
           ],

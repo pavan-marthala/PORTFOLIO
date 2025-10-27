@@ -1,10 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart' show Get;
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
 import 'package:portfolio_pavan/core/utils/gradient_outline_button.dart';
 import 'package:portfolio_pavan/core/utils/sized_context.dart';
 
+import '../../../../routes/app_routes.dart';
 import '../../../contact/presentation/screens/contact_screen.dart';
 
 class ProjectAppBar extends StatelessWidget {
@@ -33,7 +36,7 @@ class ProjectAppBar extends StatelessWidget {
             child: SafeArea(
               child: Align(
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 1024, maxHeight: 74),
+                  constraints: BoxConstraints(maxWidth: 1222, maxHeight: 74),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -75,17 +78,13 @@ class ProjectAppBar extends StatelessWidget {
                               : Icon(Icons.arrow_back, color: colors.primary),
                         ),
                       ),
+
                       GradientOutlineButton(
                         text: 'Contact',
                         outlineGradient: gradients.primary,
                         backgroundColor: colors.surfaceLight,
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ContactScreen(),
-                            ),
-                          );
+                          Get.toNamed(AppRoutes().contact);
                         },
                         showShadow: false,
                       ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart' show Get;
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:portfolio_pavan/core/theme/dimens.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
 import 'package:portfolio_pavan/core/utils/gradient_container.dart';
 
+import '../../../../routes/app_routes.dart';
 import '../../../contact/presentation/screens/contact_screen.dart';
 
 class SimilarWork extends StatelessWidget {
@@ -37,10 +40,7 @@ class SimilarWork extends StatelessWidget {
           SizedBox(height: Dimens.mediumPadding),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ContactScreen()),
-              );
+              Get.toNamed(AppRoutes().contact);
             },
             borderRadius: BorderRadius.circular(30),
             child: Container(

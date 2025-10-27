@@ -19,12 +19,13 @@ class ProjectBody extends StatelessWidget {
     final colors = context.theme.appColors;
     final gradients = context.theme.appGradients;
     final typography = context.theme.appTypography;
-    final imageHeight = context.widthPx > 600 ? 500.0 : 300.0;
+    final imageHeight = context.widthPx > 600 ? 500.0 : 200.0;
     return Align(
       alignment: Alignment.topCenter,
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 1200),
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: Dimens.largePadding,

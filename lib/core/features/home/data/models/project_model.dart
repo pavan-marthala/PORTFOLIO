@@ -1,4 +1,5 @@
 class ProjectModel {
+  final String id;
   final String? badge;
   final String? title;
   final String? excerpt;
@@ -17,6 +18,7 @@ class ProjectModel {
   final Challenge? challenge;
   final Solution? solution;
   const ProjectModel({
+    required this.id,
     this.badge,
     this.title,
     this.excerpt,
@@ -55,6 +57,7 @@ class ProjectModel {
     Solution? solution,
   }) {
     return ProjectModel(
+      id: id,
       badge: badge ?? this.badge,
       title: title ?? this.title,
       excerpt: excerpt ?? this.excerpt,
@@ -107,6 +110,7 @@ class ProjectModel {
 
   static ProjectModel fromJson(Map<String, Object?> json) {
     return ProjectModel(
+      id: json['id'] as String,
       badge: json['badge'] == null ? null : json['badge'] as String,
       title: json['title'] == null ? null : json['title'] as String,
       excerpt: json['excerpt'] == null ? null : json['excerpt'] as String,

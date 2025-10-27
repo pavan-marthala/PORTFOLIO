@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:portfolio_pavan/core/features/home/data/repository/projects_data.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
 import 'package:portfolio_pavan/core/utils/sized_context.dart';
 
+import '../../../../routes/app_routes.dart';
 import '../../../../utils/project_card.dart';
 import '../../../project_details/pesentation/screeens/project_screen.dart';
 
@@ -28,12 +31,7 @@ class ProjectsWidget extends StatelessWidget {
           imageheight: isMobile ? 200 : 250,
           maxLines: isMobile ? 3 : 4,
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) =>
-                    ProjectScreen(projectModel: item),
-              ),
-            );
+            Get.toNamed(AppRoutes().project, arguments: item);
           },
           titleStyle: isMobile
               ? typography.bodyLarge.copyWith(

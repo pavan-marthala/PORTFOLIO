@@ -4,9 +4,11 @@ import '../../../../utils/asset_icons.dart';
 
 List<ProjectModel> projects = [
   ProjectModel(
+    id: "1",
     badge: "Featured",
     title: "Genuine Match",
-    coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",
+    coverImage:
+        "https://pgmzqdiqzsnhbgxclcxi.supabase.co/storage/v1/object/public/Portfolio/genuine_match.png",
     excerpt:
         "A secure Aadhaar-verified matrimony platform connecting genuine profiles with EMQX-based real-time chat.",
     date: DateTime(2023, 5, 20).toString(),
@@ -121,6 +123,7 @@ List<ProjectModel> projects = [
     ),
   ),
   ProjectModel(
+    id: "2",
     badge: "Mobile + Backend",
     title: "Genuine Match Elite",
     coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",
@@ -238,6 +241,7 @@ List<ProjectModel> projects = [
     ),
   ),
   ProjectModel(
+    id: "3",
     badge: "Event Booking",
     title: "Jolly Junction",
     coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",
@@ -362,6 +366,7 @@ List<ProjectModel> projects = [
     ),
   ),
   ProjectModel(
+    id: "4",
     badge: "Partner Management",
     title: "Jolly Junction Partner",
     coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",
@@ -483,9 +488,11 @@ List<ProjectModel> projects = [
     ),
   ),
   ProjectModel(
+    id: "5",
     badge: "Microservices + Reactive",
     title: "Smart City Issue Management System",
-    coverImage: "https://i.ibb.co/zTNtHxqM/108504.jpg",
+    coverImage:
+        "https://pgmzqdiqzsnhbgxclcxi.supabase.co/storage/v1/object/public/Portfolio/108504.jpg",
     excerpt:
         "A reactive microservices-based backend for managing civic issues in cities and villages, connecting citizens, workers, staff, and administrators.",
     date: DateTime(2023, 5, 20).toString(),
@@ -603,6 +610,7 @@ List<ProjectModel> projects = [
   ),
 ];
 ProjectModel featuredProject = ProjectModel(
+  id: "6",
   badge: "Open Source",
   title: "Feature Management API",
   coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",

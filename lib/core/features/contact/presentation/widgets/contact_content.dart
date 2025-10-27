@@ -15,7 +15,7 @@ class ContactContent extends StatelessWidget {
         ? Column(
             spacing: Dimens.largePadding,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [ContactCard(), ContactInfo()],
+            children: [ContactCard(), ContactInfo(),SizedBox(height: Dimens.extraLargePadding,)],
           )
         : Row(
             spacing: Dimens.largePadding,
