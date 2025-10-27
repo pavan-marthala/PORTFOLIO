@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_pavan/core/features/home/data/models/project_model.dart';
 import 'package:portfolio_pavan/core/theme/theme.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme/dimens.dart';
 
@@ -35,36 +36,42 @@ class ProjectShareLinks extends StatelessWidget {
           ),
           ...(links
               .map(
-                (link) => Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Dimens.largePadding,
-                    vertical: Dimens.mediumPadding,
-                  ),
-                  decoration: BoxDecoration(
-                    color: colors.primary.withValues(alpha: .2),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: colors.primary.withValues(alpha: .5),
+                (link) => InkWell(
+                  onTap: () {
+                    launchUrl(Uri.parse(link.link!));
+                  },
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Dimens.largePadding,
+                      vertical: Dimens.mediumPadding,
                     ),
-                  ),
-                  child: Row(
-                    spacing: Dimens.mediumPadding,
-                    children: [
-                      Text(
-                        String.fromCharCode(
-                          int.parse(link.uniCode!, radix: 16),
-                        ),
-                        style: typography.bodyLarge,
+                    decoration: BoxDecoration(
+                      color: colors.primary.withValues(alpha: .2),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: colors.primary.withValues(alpha: .5),
                       ),
+                    ),
+                    child: Row(
+                      spacing: Dimens.mediumPadding,
+                      children: [
+                        Text(
+                          String.fromCharCode(
+                            int.parse(link.uniCode!, radix: 16),
+                          ),
+                          style: typography.bodyLarge,
+                        ),
 
-                      Text(
-                        link.title ?? "Not Specified",
-                        style: typography.titleMedium.copyWith(
-                          color: colors.primaryShade1,
-                          fontWeight: FontWeight.w600
+                        Text(
+                          link.title ?? "Not Specified",
+                          style: typography.titleMedium.copyWith(
+                            color: colors.primaryShade1,
+                            fontWeight: FontWeight.w600
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_pavan/core/features/home/data/models/project_model.dart';
 import 'package:portfolio_pavan/core/theme/colors.dart';
 import 'package:portfolio_pavan/core/theme/gradients.dart';
@@ -38,13 +39,13 @@ class ProjectTechStack extends StatelessWidget {
             style: typography.headlineMedium.copyWith(
               color: colors.textPrimary,
               fontWeight: FontWeight.bold,
-               fontSize: isMobile ? 22 : null,
+              fontSize: isMobile ? 22 : null,
             ),
           ),
-           MasonryGridView.count(
+          MasonryGridView.count(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            crossAxisCount:isMobile?2: 4,
+            crossAxisCount: isMobile ? 2 : 4,
             mainAxisSpacing: 16,
             crossAxisSpacing: 16,
             itemBuilder: (context, index) {
@@ -64,7 +65,8 @@ class ProjectTechStack extends StatelessWidget {
       ),
     );
   }
-    Widget _buildTech(
+
+  Widget _buildTech(
     AppTypography typography,
     AppColors colors,
     AppGradients gradients,
@@ -72,7 +74,6 @@ class ProjectTechStack extends StatelessWidget {
     required String title,
     required String uniCode,
   }) {
-    int codePoint = int.parse(uniCode, radix: 16);
     return Container(
       padding: EdgeInsets.all(Dimens.mediumPadding),
       width: double.infinity,
@@ -84,11 +85,11 @@ class ProjectTechStack extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(String.fromCharCode(codePoint),
-          style: typography.headlineSmall.copyWith(
-              fontWeight: FontWeight.bold,
-               fontSize: isMobile ? 16 : null,
-            ),),
+          SvgPicture.asset(
+            uniCode,
+            height: isMobile ? 26 : 46,
+            width: isMobile ? 26 : 46,
+          ),
           SizedBox(height: Dimens.mediumPadding),
           Text(
             title,
@@ -96,10 +97,9 @@ class ProjectTechStack extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: colors.textPrimary,
               fontSize: isMobile ? 16 : null,
-              
             ),
             textAlign: TextAlign.center,
-          )
+          ),
         ],
       ),
     );

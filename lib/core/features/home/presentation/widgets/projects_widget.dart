@@ -31,7 +31,7 @@ class ProjectsWidget extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) =>
-                    ProjectScreen(projectModel: featuredProject),
+                    ProjectScreen(projectModel: item),
               ),
             );
           },
