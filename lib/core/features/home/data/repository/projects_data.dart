@@ -126,7 +126,7 @@ List<ProjectModel> projects = [
     id: "2",
     badge: "Mobile + Backend",
     title: "Genuine Match Elite",
-    coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",
+    coverImage: "https://pgmzqdiqzsnhbgxclcxi.supabase.co/storage/v1/object/public/Portfolio/genuine_match_elite.jpg",
     excerpt:
         "A premium matrimony platform for elite users, built on the Genuine Match backend with a refined UI and exclusive verification process.",
     date: DateTime(2024, 12, 20).toString(),
@@ -244,7 +244,7 @@ List<ProjectModel> projects = [
     id: "3",
     badge: "Event Booking",
     title: "Jolly Junction",
-    coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",
+    coverImage: "https://pgmzqdiqzsnhbgxclcxi.supabase.co/storage/v1/object/public/Portfolio/J.png",
     excerpt:
         "An all-in-one event and entertainment booking platform for theatres, theme parks, and kids zones.",
     date: DateTime(2024, 10, 02).toString(),
@@ -369,7 +369,7 @@ List<ProjectModel> projects = [
     id: "4",
     badge: "Partner Management",
     title: "Jolly Junction Partner",
-    coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",
+    coverImage: "https://pgmzqdiqzsnhbgxclcxi.supabase.co/storage/v1/object/public/Portfolio/jj_p.jpg",
     excerpt:
         "Partner-focused management system enabling theatre owners and park operators to manage bookings, offers, and revenue reports.",
     date: DateTime(2024, 10, 02).toString(),
@@ -613,7 +613,7 @@ ProjectModel featuredProject = ProjectModel(
   id: "6",
   badge: "Open Source",
   title: "Feature Management API",
-  coverImage: "https://i.ibb.co/vCzHjtpV/genuine-match.png",
+  coverImage: "https://pgmzqdiqzsnhbgxclcxi.supabase.co/storage/v1/object/public/Portfolio/feature.jpg",
   excerpt:
       "An open-source backend service for managing feature flags and controlled feature rollouts using flexible, strategy-driven configurations.",
   date: DateTime(2023, 5, 20).toString(),
