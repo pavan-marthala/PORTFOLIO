@@ -60,7 +60,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      'Your Portfolio. Your Story. Breaking Daily.',
+                      "Building Tomorrow's Technology, Today",
                       style: typography.bodySmall.copyWith(
                         color: colors.textSecondary,
                         letterSpacing: 2,

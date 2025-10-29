@@ -44,12 +44,12 @@ class AppNetworkImage extends StatelessWidget {
         gradient: gradient.primaryReverse,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(Icons.error_outline, color: Colors.white, size: 36),
-            SizedBox(height: 6),
+          children: [
+            const Icon(Icons.error_outline, color: Colors.white, size: 36),
+            const SizedBox(height: 6),
             Text(
-              'Unable to load image',
-              style: TextStyle(color: Colors.white, fontSize: 13),
+              'Unable to load image : ${error.toString()}',
+              style: const TextStyle(color: Colors.white, fontSize: 13),
             ),
           ],
         ),

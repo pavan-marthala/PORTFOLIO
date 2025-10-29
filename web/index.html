@@ -3,88 +3,345 @@
 
 <head>
 
-    <base href="$FLUTTER_BASE_HREF">
+  <base href="$FLUTTER_BASE_HREF">
 
-    <meta charset="UTF-8">
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <title>Pavan Kalyan Reddy M - Full Stack Developer </title>
-    <meta name="title" content="Pavan Kalyan Reddy M - Full Stack Developer">
-    <meta name="description"
-          content="Award-winning Full Stack Developer specializing in java, spring boot, Flutter & Cloud Solutions. 9+ projects completed with 98% client satisfaction. Available for hire.">
-    <meta name="keywords"
-          content="Full Stack Developer, java Developer, spring boot, Flutter, Mobile App Development, Web Development, CI/CD, Portfolio, Pavan Klayan">
-    <meta name="author" content="Pavan Kalayan">
-    <meta name="robots" content="index, follow">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <title>Pavan Kalyan Reddy M - Full Stack Developer </title>
+  <meta name="title" content="Pavan Kalyan Reddy M - Full Stack Developer">
+  <meta name="description"
+    content="Award-winning Full Stack Developer specializing in java, spring boot, Flutter & Cloud Solutions. 9+ projects completed with 98% client satisfaction. Available for hire.">
+  <meta name="keywords"
+    content="Full Stack Developer, java Developer, spring boot, Flutter, Mobile App Development, Web Development, CI/CD, Portfolio, Pavan Klayan">
+  <meta name="author" content="Pavan Kalayan">
+  <meta name="robots" content="index, follow">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://portfolio-7c86d.web.app/">
-    <meta property="og:title" content="Pavan Kalyan Reddy M - Full Stack Developer">
-    <meta property="og:description"
-          content="Award-winning Full Stack Developer specializing in java, spring boot, Flutter & Cloud Solutions. 47+ projects completed with 98% client satisfaction.">
-    <meta property="og:image" content="https://pgmzqdiqzsnhbgxclcxi.supabase.co/storage/v1/object/public/Portfolio/profile-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Pavan Kalyan Reddy M - Full Stack Developer Portfolio">
-    <meta property="og:site_name" content="Breaking News Portfolio">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portfolio-7c86d.web.app/">
+  <meta property="og:title" content="Pavan Kalyan Reddy M - Full Stack Developer">
+  <meta property="og:description"
+    content="Award-winning Full Stack Developer specializing in java, spring boot, Flutter & Cloud Solutions. 47+ projects completed with 98% client satisfaction.">
+  <meta property="og:image"
+    content="https://pgmzqdiqzsnhbgxclcxi.supabase.co/storage/v1/object/public/Portfolio/profile-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Pavan Kalyan Reddy M - Full Stack Developer Portfolio">
+  <meta property="og:site_name" content="Breaking News Portfolio">
 
-    <!-- iOS meta tags & icons -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="The Developer Times">
-    <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="The Developer Times">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png"/>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-    <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json">
 
-    <style>
-        html, body {
-              height: 100%;
-              margin: 0;
-              overflow: hidden;
-            }
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
 
-            body {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              background: radial-gradient(ellipse at top, #1e1b4b 0%, #000000 50%);
-              font-family: 'Inter', system-ui, sans-serif;
-              color: white;
-            }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(ellipse at top, #1e1b4b 0%, #000000 50%);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: white;
+    }
 
-            #loading {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: 16px;
-              font-size: 1.1rem;
-              animation: fadeIn 0.8s ease-in-out;
-            }
+    #loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.1rem;
+      animation: fadeIn 0.8s ease-in-out;
+    }
 
-            .spinner {
-              width: 48px;
-              height: 48px;
-              border: 4px solid rgba(255, 255, 255, 0.3);
-              border-top-color: #fff;
-              border-radius: 50%;
-              animation: spin 1s linear infinite;
-            }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
 
-            @keyframes spin {
-              to {
-                transform: rotate(360deg);
-              }
-            }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-            @keyframes fadeIn {
-              from { opacity: 0; transform: translateY(10px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
+    .logo-container {
+      position: relative;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.8s ease-out;
+    }
 
-    </style>
-    <script type="application/ld+json">
+    .logo-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+      animation: rotate 10s linear infinite;
+    }
+
+    .logo-icon img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      z-index: 1;
+      filter: brightness(0) invert(1);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .brand-name {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+      animation: gradientShift 3s ease infinite, fadeInUp 0.8s ease-out 0.2s backwards;
+      background-size: 200% 200%;
+      text-align: center;
+    }
+
+    @keyframes gradientShift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .tagline {
+      color: #9ca3af;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      text-align: center;
+    }
+
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(139, 92, 246, 0.2);
+      border-top-color: #8b5cf6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite, fadeInUp 0.8s ease-out 0.6s backwards;
+      margin-bottom: 25px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Loading Text */
+    .loading-text {
+      color: #9ca3af;
+      font-size: 16px;
+      font-weight: 600;
+      animation: pulse 2s ease-in-out infinite, fadeInUp 0.8s ease-out 0.8s backwards;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .progress-container {
+      width: 280px;
+      height: 6px;
+      background: rgba(139, 92, 246, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 30px;
+      animation: fadeInUp 0.8s ease-out 1s backwards;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
+      background-size: 200% 100%;
+      width: 0%;
+      animation: progress 2.5s ease-out forwards, gradientMove 2s linear infinite;
+      border-radius: 3px;
+    }
+
+    @keyframes progress {
+      to {
+        width: 95%;
+      }
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+
+    /* Fade In Up Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .status-dots {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+      animation: fadeInUp 0.8s ease-out 1.2s backwards;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.3);
+      animation: dotPulse 1.5s ease-in-out infinite;
+    }
+
+    .dot:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes dotPulse {
+
+      0%,
+      100% {
+        background: rgba(139, 92, 246, 0.3);
+        transform: scale(1);
+      }
+
+      50% {
+        background: #8b5cf6;
+        transform: scale(1.3);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo-icon {
+        width: 100px;
+        height: 100px;
+      }
+
+      .logo-icon img {
+        width: 65px;
+        height: 65px;
+      }
+
+      .brand-name {
+        font-size: 36px;
+      }
+
+      .tagline {
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+
+      .progress-container {
+        width: 220px;
+      }
+
+      .loading-text {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-icon {
+        width: 80px;
+        height: 80px;
+      }
+
+      .logo-icon img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .brand-name {
+        font-size: 28px;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Person",
@@ -120,30 +377,30 @@
 
 <body>
 
-<script src="flutter_bootstrap.js" async></script>
+  <script src="flutter_bootstrap.js" async></script>
 
 
-<script type="module">
+  <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-const firebaseConfig = {
-  apiKey: "AIzaSyBDAd-D5aZCiwI3dNIBSYzYiRJD5SfsL2s",
-  authDomain: "portfolio-293e6.firebaseapp.com",
-  projectId: "portfolio-293e6",
-  storageBucket: "portfolio-293e6.firebasestorage.app",
-  messagingSenderId: "538422274795",
-  appId: "1:538422274795:web:5209b6f78312671bfc6cae",
-  measurementId: "G-21Q9341EJ2"
-};
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDAd-D5aZCiwI3dNIBSYzYiRJD5SfsL2s",
+      authDomain: "portfolio-293e6.firebaseapp.com",
+      projectId: "portfolio-293e6",
+      storageBucket: "portfolio-293e6.firebasestorage.app",
+      messagingSenderId: "538422274795",
+      appId: "1:538422274795:web:5209b6f78312671bfc6cae",
+      measurementId: "G-21Q9341EJ2"
+    };
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-</script>
-<script>
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+  <script>
     const loading = document.getElementById('loading');
 
     _flutter.loader.load({
-      onEntrypointLoaded: async function(engineInitializer) {
+      onEntrypointLoaded: async function (engineInitializer) {
         loading.textContent = "Initializing engine...";
         const appRunner = await engineInitializer.initializeEngine();
 
@@ -154,10 +411,28 @@ const analytics = getAnalytics(app);
         loading.remove();
       }
     });
-</script>
-<div id="loading">
+  </script>
+  <div id="loading">
+    <div class="logo-container">
+      <div class="logo-icon">
+        <img src="icons/Icon-512.png" alt="Pavan Kalyan Logo" />
+      </div>
+    </div>
+
+    <div class="brand-name">Pavan Kalyan Reddy M</div>
+    <div class="tagline">Your Vision. My Execution. Breaking Success.</div>
     <div class="spinner"></div>
-    <div id="loading-text">Loading...</div>
-</div>
+    <div id="loading-text">Loading your experience...</div>
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+
+    <div class="status-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
 </body>
+
 </html>

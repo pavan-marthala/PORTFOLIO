@@ -20,6 +20,8 @@ class ProjectBody extends StatelessWidget {
     final gradients = context.theme.appGradients;
     final typography = context.theme.appTypography;
     final imageHeight = context.widthPx > 600 ? 500.0 : 200.0;
+    final topPadding = MediaQuery.of(context).padding.top;
+    final appBarHeight = (75.0) + topPadding;
     return Align(
       alignment: Alignment.topCenter,
       child: ConstrainedBox(
@@ -27,9 +29,9 @@ class ProjectBody extends StatelessWidget {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: Dimens.largePadding,
-              vertical: Dimens.largePadding + 80,
+              vertical: appBarHeight + 20,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
